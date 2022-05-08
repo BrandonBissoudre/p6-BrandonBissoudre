@@ -74,3 +74,10 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.trier p {
+margin-left: 100px;
+padding-top: 10px;
+font-weight: bold;
+}
+

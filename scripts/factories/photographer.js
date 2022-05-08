@@ -33,8 +33,15 @@ function photographerFactory(data)  {
         article.appendChild(img);
         article.appendChild(h2);
         const p = document.createElement('p');
-        p.textContent = city + country + tagline
+        p.textContent = city + country
         article.appendChild(p)
+        const p2 = document.createElement('p');
+        p2.textContent = tagline
+        article.appendChild(p2)
+        const p3 = document.createElement('p');
+        p3.textContent = price
+        article.appendChild(p3)
+        
 
         lien.appendChild(article)
         
@@ -63,6 +70,7 @@ function profil(data){
         const p = document.createElement('p');
         p.textContent = city + country + tagline
         article.appendChild(p)
+        
  
         return (article);
     }

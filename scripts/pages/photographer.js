@@ -23,11 +23,13 @@ async function getPhotographers() {
        const photographersSection = document.querySelector(".photograph-header");
        console.log (photographers)
     // refaire pour recup par id //
-    //    photographers.forEach((photographer) => {
-    //        const photographerModel = profil(photographer);
-    //        const userCardDOM = photographerModel.getUserCardDOM();
-    //        photographersSection.appendChild(userCardDOM);
-    //    });
+       photographers.forEach((photographer) => {
+           if(id==photographer.id) {
+           const photographerModel = profil(photographer);
+           const userCardDOM = photographerModel.getUserCardDOM();
+           photographersSection.appendChild(userCardDOM);
+           }         
+       });
    };
 
    async function init() {
