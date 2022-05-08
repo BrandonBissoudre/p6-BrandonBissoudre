@@ -68,12 +68,18 @@ function profil(data){
         article.appendChild(img);
         article.appendChild(h2);
         const p = document.createElement('p');
-        p.textContent = city + country + tagline
+        p.textContent = city + country
+        p.classList.add("textp1")
         article.appendChild(p)
+        const p2 = document.createElement('p');
+        p2.textContent = tagline
+        p2.classList.add("textp2")
+        article.appendChild(p2)
         
  
         return (article);
     }
 
-    return { name, picture, getUserCardDOM }     
+    return { name, picture, getUserCardDOM } 
+    
 }
