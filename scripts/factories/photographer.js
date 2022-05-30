@@ -64,7 +64,7 @@ function profil(data) {
 
 }
 
-function contentCard(data) {
+function mediaFactory(data) {
     const { id, title, image, video, likes, date } = data;
 
     const picturePath = `assets/photo/${image}`;
@@ -78,11 +78,11 @@ function contentCard(data) {
             const img = document.createElement('img');
             img.setAttribute("src", picturePath)
             card.appendChild(img);
-
         } else if (video) {
             const video = document.createElement('video');
             video.setAttribute("src", videoPath)
             video.autoplay = true;
+            video.loop = true;
             card.appendChild(video);
         }
         const info = document.createElement('div')
@@ -103,6 +103,24 @@ function contentCard(data) {
         return (card);
     }
 
-    return { name, picture: picturePath, getCardDOM }
+    function getSlide() {
+        const slide = document.createElement('div');
+        slide.classList.add('slide');
+
+        if (image) {
+            const img = document.createElement('img');
+            img.setAttribute("src", picturePath)
+            slide.appendChild(img);
+        } else if (video) {
+            const video = document.createElement('video');
+            video.setAttribute("src", videoPath)
+            video.autoplay = true;
+            video.loop = true;
+            slide.appendChild(video);
+        }
+        return slide
+    }
+
+    return { name, picture: picturePath, getCardDOM, getSlide }
 
 }
