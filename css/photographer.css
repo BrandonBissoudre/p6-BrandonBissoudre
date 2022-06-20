@@ -374,3 +374,13 @@ form input {
     top: 50px;
     cursor: pointer;
 }
+
+/* Like */
+.unlike{
+    color:#ccc;
+  }
+  
+  .like{
+    color:#f00650;
+  }
+  

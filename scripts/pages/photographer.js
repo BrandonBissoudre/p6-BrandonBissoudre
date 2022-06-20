@@ -42,12 +42,12 @@ window.addEventListener('load', () => {
         document.getElementById('close').addEventListener('click', () => {
                 toggleSlider();
             })
-            // const slides = document.querySelectorAll(".slide");
+            const slides = document.querySelectorAll(".slide");
 
-        // // loop through slides and set each slides translateX
-        // slides.forEach((slide, indx) => {
-        //     slide.style.transform = `translateX(${indx * 100}%)`;
-        // });
+        // loop through slides and set each slides translateX
+        slides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${indx * 100}%)`;
+        });
 
         const nextSlide = document.querySelector(".btn-next");
 
@@ -75,7 +75,7 @@ window.addEventListener('load', () => {
 
         // add event listener and navigation functionality
         prevSlide.addEventListener("click", function() {
-            console.log('krrrrrrrr');
+            console.log('hello');
             // check if current slide is the first and reset current slide to last
             if (curSlide === 0) {
                 curSlide = maxSlide;
