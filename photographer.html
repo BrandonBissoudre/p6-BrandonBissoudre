@@ -19,13 +19,19 @@
     <main>
 
         <div class="photograph-header">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <div id="photograph-header-info">
+
+            </div>
+            <button tabindex="0" class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <img id="photograph-header-img">
         </div>
 
 
-        <div class="content-container">
-            <div class="trier">
-                <label class="dropdown">
+
+        <div class="content-wrapper">
+            <div class="content-container">
+                <div class="trier">
+                    <label class="dropdown">
 
                     <div class="dd-button">
                       Trier par
@@ -40,18 +46,28 @@
                     </ul>
                     
                   </label>
+                </div>
+
+                <div class="photograph-content">
+
+
+
+                </div>
+
             </div>
-
-            <div class="photograph-content">
-
-
-
-            </div>
-
         </div>
 
 
     </main>
+
+    <div class="photograph-info">
+        <div class="like-count-wrapper">
+            <span class="like-count">0</span>
+            <img src="/assets/icons/heart_liked.svg">
+            </d>
+        </div>
+        <span id='price'>0</span>
+    </div>
 
     <div class="slider-wrapper" style="display: none;" id='slider'>
 
@@ -100,7 +116,7 @@
                         <textarea class="boxsizingBorder" placeholder="Message" id="message" name="message" rows="6">
                            
                         </textarea>
-                        <br>>
+                        <br>
                     </div>
                     <button type="submit" class="form_button">Envoyer</button>
                 </form>

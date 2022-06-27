@@ -15,18 +15,39 @@ window.addEventListener('load', () => {
         // Display Content
         displayHeader(photographId);
         displayContent(photographId);
+        displayInfoFooter(photographId);
 
         // Filter init
         initFilters();
     };
 
+    async function displayInfoFooter(photographId) {
+        likeCountDom = document.querySelector(".like-count");
+        priceDom = document.getElementById("price");
+        photograph = await getPhotographerById(photographId);
+        media = await getPhotographerContentById(photographId);
+
+        let count = 0;
+        media.forEach(el => {
+            count += el.likes;
+        })
+
+        likeCountDom.innerText = count;
+        priceDom.innerText = `${photograph.price}€ / jour`;
+        // Render with asc popularity by default
+        console.log('photograph obj', photograph);
+    };
+
+
     async function displayHeader(photographId) {
         const photograph = await getPhotographerById(photographId);
 
-        const photographersSection = document.querySelector(".photograph-header");
+        const photographersHeaderImg = document.querySelector(".photograph-header-img");
+        const photographersInfo = document.querySelector(".photograph-header-info");
         const photographerModel = profil(photograph);
         const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+        photographersHeaderImg.appendChild(userCardDOM[0]);
+        photographersInfo.appendChild(userCardDOM[1]);
     };
 
     async function displayContent(photographId) {
@@ -40,9 +61,9 @@ window.addEventListener('load', () => {
 
     function initSlider() {
         document.getElementById('close').addEventListener('click', () => {
-                toggleSlider();
-            })
-            const slides = document.querySelectorAll(".slide");
+            toggleSlider();
+        })
+        const slides = document.querySelectorAll(".slide");
 
         // loop through slides and set each slides translateX
         slides.forEach((slide, indx) => {
@@ -124,7 +145,10 @@ window.addEventListener('load', () => {
         const slides = document.querySelectorAll('.slide');
 
         photographersContentSection.childNodes.forEach((el, index) => {
-            el.addEventListener('click', () => {
+            console.log(el);
+            el.childNodes[0].addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                ev.preventDefault();
                 slides.forEach((slide, indx) => {
                     console.log(index);
                     curSlide = index;
@@ -133,8 +157,22 @@ window.addEventListener('load', () => {
 
                 toggleSlider();
             })
-        })
 
+            el.childNodes[0].addEventListener('keypress', (ev) => {
+                ev.stopPropagation();
+                ev.preventDefault();
+                if (ev.key === 'Enter')
+                slides.forEach((slide, indx) => {
+                    console.log(index);
+                    curSlide = index;
+                    slide.style.transform = `translateX(${100 * (indx - index)}%)`;
+                });
+
+                toggleSlider();
+            
+            })
+        })
+       
         initSlider();
     }
 
@@ -213,4 +251,4 @@ window.addEventListener('load', () => {
     }
 
     init();
-})
+})      
